@@ -6,8 +6,9 @@ import BrowseRoom from "../parts/Homepage/BrowseRoom.jsx";
 import JustArrived from "../parts/Homepage/JustArrived.jsx";
 import Clients from "../parts/Clients.jsx";
 import SiteMap from "../parts/Homepage/SiteMap.jsx";
+import Footer from "../parts/Footer.jsx";
 
-function Home(props) {
+function Home() {
   return (
     <div>
       <Header />
@@ -16,6 +17,7 @@ function Home(props) {
       <JustArrived />
       <Clients />
       <SiteMap />
+      <Footer />
     </div>
   );
 }
