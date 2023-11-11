@@ -4,10 +4,10 @@ import { useNavigate } from "react-router-dom";
 const SiteMap = () => {
   const navigate = useNavigate();
   return (
-    <section className="">
-      <div className="border-t border-b border-gray-200 py-12 mt-16 px-4">
+    <section className="sitemap">
+      <div className="border-b border-gray-200 py-12 mt-16 px-4">
         <div className="flex justify-center mb-8">
-          <img src="./public/assets/images/content/logo.png" alt="Luxspace | Fulfill your house with beautiful furniture" />
+          <img src="../.././public/assets/images/content/logo.png" alt="Luxspace | Fulfill your house with beautiful furniture" />
         </div>
         <aside className="container mx-auto">
           <div className="flex flex-wrap -mx-4 justify-center">

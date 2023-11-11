@@ -11,7 +11,7 @@ import Footer from "../parts/Footer.jsx";
 function Home() {
   return (
     <div>
-      <Header />
+      <Header theme={"white"} position={"absolute"} />
       <Hero />
       <BrowseRoom />
       <JustArrived />
