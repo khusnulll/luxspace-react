@@ -9,7 +9,7 @@ import Footer from "../parts/Footer.jsx";
 function Details() {
   return (
     <div>
-      <Header />
+      <Header theme={"black"} />
       <Breadcrumb
         list={[
           { url: "/", name: "home" },

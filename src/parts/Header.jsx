@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ theme, position }) => {
   const navigate = useNavigate();
   return (
     <header className="absolute w-screen z-50 px-4">
@@ -14,22 +14,22 @@ const Header = () => {
           <div className="w-auto">
             <ul className="fixed bg-white text-black inset-0 flex flex-col invisible items-center justify-center opacity-0 md:visible md:flex-row md:bg-transparent md:relative md:opacity-100 md:flex md:items-center" id="menu">
               <li className="mx-3 py-6 md:py-0">
-                <a className="sm:text-black md:text-white hover:underline" onClick={() => navigate("/showcase")}>
+                <a className={["hover:underline", theme === "white" ? "text-black md:text-white" : "text-white md:text-black"]} onClick={() => navigate("/showcase")}>
                   Showcase
                 </a>
               </li>
               <li className="mx-3 py-6 md:py-0">
-                <a className="sm:text-black md:text-white hover:underline" onClick={() => navigate("/catalog")}>
+                <a className={["hover:underline", theme === "white" ? "text-black md:text-white" : "text-white md:text-black"]} onClick={() => navigate("/catalog")}>
                   Catalog
                 </a>
               </li>
               <li className="mx-3 py-6 md:py-0">
-                <a className="sm:text-black md:text-white hover:underline" onClick={() => navigate("/delivery")}>
+                <a className={["hover:underline", theme === "white" ? "text-black md:text-white" : "text-white md:text-black"]} onClick={() => navigate("/delivery")}>
                   Delivery
                 </a>
               </li>
               <li className="mx-3 py-6 md:py-0">
-                <a className="sm:text-black md:text-white hover:underline" onClick={() => navigate("/rewards")}>
+                <a className={["hover:underline", theme === "white" ? "text-black md:text-white" : "text-white md:text-black"]} onClick={() => navigate("/rewards")}>
                   Rewards
                 </a>
               </li>
