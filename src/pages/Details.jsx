@@ -4,7 +4,6 @@ import Header from "../parts/Header.jsx";
 import Breadcrumb from "../components/Breadcrumb/index.jsx";
 import ProductDetails from "../parts/Details/ProductDetails.jsx";
 import Suggestion from "../parts/Details/Suggestion.jsx";
-import Clients from "../parts/Clients.jsx";
 import SiteMap from "../parts/Homepage/SiteMap.jsx";
 import Footer from "../parts/Footer.jsx";
 
@@ -21,7 +20,6 @@ function Details() {
       />
       <ProductDetails />
       <Suggestion />
-      <Clients />
       <SiteMap />
       <Footer />
     </div>
