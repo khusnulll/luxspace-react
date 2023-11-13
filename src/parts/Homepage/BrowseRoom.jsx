@@ -1,6 +1,10 @@
 import React from "react";
+import { useAsync } from "react-async";
 
 const BrowseRoom = () => {
+  const { data, status, error, run } = useAsync({ data: { username: "" } });
+
+  console.log(data, status, error);
   return (
     <section className="flex bg-gray-100 py-16 px-4" id="browse-the-room">
       <div className="container mx-auto">
