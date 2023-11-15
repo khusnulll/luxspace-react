@@ -1,14 +1,15 @@
+import React from "react";
 import { useEffect } from "react";
-import { useAsync } from "../../helpers/hooks/useAsync";
+// import { useAsync } from "../../helpers/hooks/useAsync";
 
 const BrowseRoom = () => {
-  const { data, status, error, run } = useAsync({ data: { username: "" } });
+  // const { data, status, error, run } = useAsync({ data: { username: "" } });
 
-  useEffect(() => {
-    run(fetch);
-  }, [third]);
+  // useEffect(() => {
+  //   run(fetch);
+  // }, [third]);
 
-  console.log(data, status, error);
+  // console.log(data, status, error);
   return (
     <section className="flex bg-gray-100 py-16 px-4" id="browse-the-room">
       <div className="container mx-auto">
