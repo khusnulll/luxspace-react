@@ -1,8 +1,12 @@
-import React from "react";
-import { useAsync } from "react-async";
+import { useEffect } from "react";
+import { useAsync } from "../../helpers/hooks/useAsync";
 
 const BrowseRoom = () => {
   const { data, status, error, run } = useAsync({ data: { username: "" } });
+
+  useEffect(() => {
+    run(fetch);
+  }, [third]);
 
   console.log(data, status, error);
   return (
