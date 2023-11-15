@@ -9,9 +9,11 @@ import SiteMap from "../parts/Homepage/SiteMap.jsx";
 import Footer from "../parts/Footer.jsx";
 
 import useScrollAnchor from "../helpers/hooks/useScrollAnchor.jsx";
+import useModalDOM from "../helpers/hooks/useModalDOM.jsx";
 
 function Home() {
   useScrollAnchor();
+  useModalDOM();
   return (
     <div>
       <Header theme={"white"} position={"absolute"} />
