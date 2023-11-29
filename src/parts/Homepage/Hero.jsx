@@ -39,7 +39,7 @@ const Hero = () => {
             </div>'
             ></button>
           </div>
-          <img src="../../assets/images/content/image-section-1.png" alt="hero 1" className="absolute inset-0 md:relative w-full h-full object-cover object-center" />
+          <img src="../../assets/images/content/section-1.png" alt="hero 1" className="absolute inset-0 md:relative w-full h-full object-cover object-center" />
           <div className="overlay"></div>
         </div>
       </div>
