@@ -1,7 +1,7 @@
 import React from "react";
 
 import Header from "../parts/Header.jsx";
-import Breadcrumb from "../components/Breadcrumb/index.jsx";
+import Breadcrumb from "../components/Breadcrumb/Breadcrumb.jsx";
 import ShoppingCart from "../parts/Cart/ShoppingCart.jsx";
 import ShippingDetails from "../parts/Cart/ShippingDetails.jsx";
 import SiteMap from "../parts/Homepage/SiteMap.jsx";

@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 import Header from "../parts/Header.jsx";
-import Breadcrumb from "../components/Breadcrumb/index.jsx";
+import Breadcrumb from "../components/Breadcrumb/Breadcrumb.jsx";
 import SiteMap from "../parts/Homepage/SiteMap.jsx";
 import Footer from "../parts/Footer.jsx";
 
