@@ -8,7 +8,7 @@ const Header = ({ theme, position }) => {
       <div className="container mx-auto py-5">
         <div className="flex flex-stretch items-center">
           <div className="w-56 items-center flex">
-            <img src="/assets/images/content/logo.png" onClick={() => navigate("/")} alt="Luxspace | Fulfill your house with beautiful furniture" className="cursor-pointer" />
+            <img src="../../assets/images/content/logo.png" onClick={() => navigate("/")} alt="Luxspace | Fulfill your house with beautiful furniture" className="cursor-pointer" />
           </div>
           <div className="w-full"></div>
           <div className="w-auto">
