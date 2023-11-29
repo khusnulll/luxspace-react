@@ -136,6 +136,7 @@ const JustArrived = () => {
           </div>
         </div>
       </div>
+
     </section>
   );
 };

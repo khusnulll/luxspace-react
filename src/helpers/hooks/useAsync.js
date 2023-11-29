@@ -5,12 +5,13 @@ const defultState = {
   status: "idle",
   error: null,
 };
-const useAsync = (initialState) => {
+
+export const useAsync = (initialState) => {
   const [{ data, status, error }, setState] = useState({ ...defultState, ...initialState });
 
   const run = useCallback(
     (promise) => {
-      if (!promise || promise.then) throw new Error("the argument passed to useAsync().run must be a promise");
+      if (!promise || typeof promise.then !== "function") throw new Error("the argument passed to useAsync().run must be a promise");
       setState({ status: "pending" });
       return promise.then(
         (data) => {
@@ -29,5 +30,3 @@ const useAsync = (initialState) => {
 
   return { data, status, error, run };
 };
-
-export default useAsync;

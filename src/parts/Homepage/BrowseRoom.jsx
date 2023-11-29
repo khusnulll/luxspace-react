@@ -1,15 +1,22 @@
 import React from "react";
 import { useEffect } from "react";
-// import { useAsync } from "../../helpers/hooks/useAsync";
+import { useAsync } from "../../helpers/hooks/useAsync";
 
 const BrowseRoom = () => {
-  // const { data, status, error, run } = useAsync({ data: { username: "" } });
+  const { data, status, error, run } = useAsync({ data: { username: "" } });
 
-  // useEffect(() => {
-  //   run(fetch);
-  // }, [third]);
+  useEffect(() => {
+    run(
+      fetch("https://694dc68a-1939-4e41-9198-e4638dafb209.mock.pstmn.io//api/categories/?page=1&limit=4").then(async (response) => {
+        const jsonResponse = await response.json();
+        if (response.ok) return jsonResponse;
 
-  // console.log(data, status, error);
+        throw new Error(JSON.stringify(jsonResponse));
+      })
+    );
+  }, [run]);
+
+  console.log(data, status, error);
   return (
     <section className="flex bg-gray-100 py-16 px-4" id="browse-the-room">
       <div className="container mx-auto">
