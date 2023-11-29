@@ -39,7 +39,7 @@ const BrowseRoom = () => {
           </div>
           <div className="relative col-span-9 row-span-1 md:col-span-2 md:row-span-2 card">
             <div className="card-shadow rounded-xl">
-              <img src="../../assets/images/content/catalog-2.png" alt="" className="w-full h-full object-cover object-center overlay overflow-hidden rounded-xl" />
+              <img src="../../assets/images/content/catalog-3.png" alt="" className="w-full h-full object-cover object-center overlay overflow-hidden rounded-xl" />
             </div>
             <div className="overlay right-0 left-0 top-0 bottom-0 md:bottom-auto flex justify-center md:items-center flex-col pl-48 md:pl-0 pt-0 md:pt-12">
               <h5 className="text-lg font-semibold">Decoration</h5>
@@ -49,7 +49,7 @@ const BrowseRoom = () => {
           </div>
           <div className="relative col-span-9 row-span-1 md:col-span-3 md:row-span-2 card">
             <div className="card-shadow rounded-xl">
-              <img src="../../assets/images/content/catalog-3.png" alt="" className="w-full h-full object-cover object-center overlay overflow-hidden rounded-xl" />
+              <img src="../../assets/images/content/catalog-4.png" alt="" className="w-full h-full object-cover object-center overlay overflow-hidden rounded-xl" />
             </div>
             <div className="overlay right-0 left-0 top-0 bottom-0 md:bottom-auto flex justify-center md:items-center flex-col pl-48 md:pl-0 pt-0 md:pt-12">
               <h5 className="text-lg font-semibold">Living Room</h5>
@@ -59,7 +59,7 @@ const BrowseRoom = () => {
           </div>
           <div className="relative col-span-9 row-span-1 md:col-span-4 card">
             <div className="card-shadow rounded-xl">
-              <img src="../../assets/images/content/catalog-4.png" alt="" className="w-full h-full object-cover object-center overlay overflow-hidden rounded-xl" />
+              <img src="../../assets/images/content/catalog-2.png" alt="" className="w-full h-full object-cover object-center overlay overflow-hidden rounded-xl" />
             </div>
             <div className="overlay left-0 top-0 bottom-0 flex justify-center flex-col pl-48 md:pl-72">
               <h5 className="text-lg font-semibold">Children Room</h5>
