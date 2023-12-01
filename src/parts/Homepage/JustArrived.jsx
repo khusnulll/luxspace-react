@@ -93,7 +93,7 @@ const JustArrived = () => {
                     </svg>
                   </div>
                 </div>
-                <img src="./public/assets/images/content/arrived-5.png" alt="" className="w-full h-full object-cover object-center" />
+                <img src="../../../../public/assets/images/content/arrived-5.png" alt="" className="w-full h-full object-cover object-center" />
               </div>
               <h5 className="text-lg font-semibold mt-4">Racking Plants</h5>
               <span className="">IDR 599.400</span>
