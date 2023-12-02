@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useAsync } from "../../helpers/hooks/useAsync";
 
 const BrowseRoom = () => {
-  const { data, status, error, run } = useAsync({ data: { username: "" } });
+  const { data, status, error, run, isLoading } = useAsync({ data: { username: "" } });
 
   useEffect(() => {
     run(
@@ -17,6 +17,8 @@ const BrowseRoom = () => {
   }, [run]);
 
   console.log(data, status, error);
+
+  if (isLoading) return "Loading";
   return (
     <section className="flex bg-gray-100 py-16 px-4" id="browse-the-room">
       <div className="container mx-auto">
