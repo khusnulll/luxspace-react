@@ -1,19 +1,13 @@
 import React from "react";
 import { useEffect } from "react";
 import { useAsync } from "../../helpers/hooks/useAsync";
+import fetchData from "../../helpers/fetch";
 
 const BrowseRoom = () => {
   const { data, status, error, run, isLoading } = useAsync({ data: { username: "" } });
 
   useEffect(() => {
-    run(
-      fetch("https://694dc68a-1939-4e41-9198-e4638dafb209.mock.pstmn.io//api/categories/?page=1&limit=4").then(async (response) => {
-        const jsonResponse = await response.json();
-        if (response.ok) return jsonResponse;
-
-        throw new Error(JSON.stringify(jsonResponse));
-      })
-    );
+    run(fetch({ url: "api/categories/?page=1&limit=4" }));
   }, [run]);
 
   console.log(data, status, error);
