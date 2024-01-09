@@ -1,17 +1,18 @@
 import React from "react";
 import { useEffect } from "react";
 import { useAsync } from "../../helpers/hooks/useAsync";
-import fetch from "../../helpers/fetch/index.js";
+import fetch from "../../helpers/fetch/index";
 
 const BrowseRoom = () => {
   const { data, status, error, run, isLoading } = useAsync({ data: { username: "" } });
 
   useEffect(() => {
-    run(fetch({ url: "api/categories/?page=1&limit=4" }));
+    run(fetch({ url: "/api/categories/?page=1&limit=4" }));
+    console.log(data);
   }, [run]);
 
-  console.log(data, status, error);
-  console.log("Data:", data);
+  // console.log(data, status, error);
+  // console.log("Data:", data);
   console.log("Status:", status);
   console.log("Error:", error);
 
@@ -58,7 +59,7 @@ const BrowseRoom = () => {
                     style={{ height: index === 0 ? 180 : "auto" }}
                   >
                     <div className="card-shadow rounded-xl">
-                      <img src={`./assets/images/content/${item.imageUrl}`} alt={item?.title} className="w-full h-full object-cover object-center overlay overflow-hidden rounded-xl" />
+                      <img src={`./src/assets/images/content/${item?.imageUrl}`} alt={item?.title} className="w-full h-full object-cover object-center overlay overflow-hidden rounded-xl" />
                     </div>
                     <div className="overlay right-0 left-0 top-0 bottom-0 md:bottom-auto flex justify-center md:items-center flex-col pl-48 md:pl-0 pt-0 md:pt-12">
                       <h5 className="text-lg font-semibold">{item?.title}</h5>
@@ -69,37 +70,6 @@ const BrowseRoom = () => {
                   </div>
                 );
               })}
-
-          <div className="relative col-span-9 row-span-1 md:col-span-2 md:row-span-2 card">
-            <div className="card-shadow rounded-xl">
-              <img src="../../assets/images/content/catalog-3.png" alt="" className="w-full h-full object-cover object-center overlay overflow-hidden rounded-xl" />
-            </div>
-            <div className="overlay right-0 left-0 top-0 bottom-0 md:bottom-auto flex justify-center md:items-center flex-col pl-48 md:pl-0 pt-0 md:pt-12">
-              <h5 className="text-lg font-semibold">Decoration</h5>
-              <span className="">77.392 items</span>
-            </div>
-            <a href="details.html" className="stretched-link"></a>
-          </div>
-          <div className="relative col-span-9 row-span-1 md:col-span-3 md:row-span-2 card">
-            <div className="card-shadow rounded-xl">
-              <img src="../../assets/images/content/catalog-4.png" alt="" className="w-full h-full object-cover object-center overlay overflow-hidden rounded-xl" />
-            </div>
-            <div className="overlay right-0 left-0 top-0 bottom-0 md:bottom-auto flex justify-center md:items-center flex-col pl-48 md:pl-0 pt-0 md:pt-12">
-              <h5 className="text-lg font-semibold">Living Room</h5>
-              <span className="">22.094 items</span>
-            </div>
-            <a href="details.html" className="stretched-link"></a>
-          </div>
-          <div className="relative col-span-9 row-span-1 md:col-span-4 card">
-            <div className="card-shadow rounded-xl">
-              <img src="../../assets/images/content/catalog-2.png" alt="" className="w-full h-full object-cover object-center overlay overflow-hidden rounded-xl" />
-            </div>
-            <div className="overlay left-0 top-0 bottom-0 flex justify-center flex-col pl-48 md:pl-72">
-              <h5 className="text-lg font-semibold">Children Room</h5>
-              <span className="">837 items</span>
-            </div>
-            <a href="details.html" className="stretched-link"></a>
-          </div>
         </div>
       </div>
     </section>
