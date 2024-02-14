@@ -112,7 +112,7 @@ const BrowseRoom = () => {
                   style={{ height: index === 0 ? 180 : "auto" }}
                 >
                   <div className="card-shadow rounded-xl">
-                    <img src={`./public/assets/images/content/${item?.imageUrl}`} alt={item?.title} className="w-full h-full object-cover object-center overlay overflow-hidden rounded-xl" />
+                    <img src={`./dist/assets/images/content/${item?.imageUrl}`} alt={item?.title} className="w-full h-full object-cover object-center overlay overflow-hidden rounded-xl" />
                   </div>
                   <div className={`overlay ${ratioClassNames?.meta?.[item.ratio.md]}`}>
                     <h5 className="text-lg font-semibold">{item?.title}</h5>
