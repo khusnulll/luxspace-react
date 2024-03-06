@@ -1,4 +1,4 @@
-export default function fetchData({ url, method = "GET", host = import.meta.env.VITE_REACT_APP_API_HOST, body }) {
+export default function fetchData({ url, method = "GET", host = "https://694dc68a-1939-4e41-9198-e4638dafb209.mock.pstmn.io", body }) {
   return fetch(`${host}${url}`, {
     method,
     mode: "cors",
