@@ -19,15 +19,38 @@ const Carousel = ({children, refContainer}) => {
   const onDragMove = useCallback(
     (e) => {
       e = e || window.Event
+      e.preventDefault()
       console.log(e)
+
+      if(e.type === "touchmove"){
+        posX2.current = posX1.current - e.touches[0].clientX
+        posX1.current = e.touches[0].clientX
+      } else {
+        posX2.current = posX1.current - e.clientX
+        posX1.current = e.clientX
+      }
+
+      refDragHandler.current.style.left = refDragHandler.current.offsetLeft - posX2.current + "px";
     },
-    [],
+    [posX1, posX2],
   )
 
   const onDragEnd = useCallback(
     (e) => {
       e = e || window.Event
+      e.preventDefault()
       console.log(e)
+
+      posFinal.current = refDragHandler.current.offsetLeft
+
+      if(posFinal - posInitial < -treshold){
+        fnShiftItem(DIRECTION_LEFT)
+      } else if(posFinal.current - posInitial.current > treshold){
+        fnShiftItem(DIRECTION_RIGHT)
+      } else {
+      refDragHandler.current.style.left = `${posInitial.current} px`
+
+      }
     },
     [],
   )
@@ -35,18 +58,36 @@ const Carousel = ({children, refContainer}) => {
   const onDragStart = useCallback(
     (e) => {
       e = e || window.Event
+      e.preventDefault()
       console.log(e)
+
+      posInitial.current = refDragHandler.current.offsetLeft
+
+      if(e.type === "touchstart") {
+        posX1.current = e.touches[0].clientX
+      } else {
+        posX1.current = e.clientX
+        document.onmouseup = onDragEnd
+        document.onmousemove = onDragMove
+      }
     },
     [],
   )
 
   useLayoutEffect(() => {
-    first
-  
+    const refForwardDragHandler = refDragHandler.current
+
+    refForwardDragHandler.onmousedown = onDragStart
+    refForwardDragHandler.addEventListener("touchstart", onDragStart)
+    refForwardDragHandler.addEventListener("touchend", onDragEnd)
+    refForwardDragHandler.addEventListener("touchmove", onDragMove)
+   
     return () => {
-      second
+      refForwardDragHandler.removeEventListener("touchstart", onDragStart)
+      refForwardDragHandler.removeEventListener("touchend", onDragEnd)
+      refForwardDragHandler.removeEventListener("touchmove", onDragMove)
     };
-  }, [third])
+  }, [onDragStart, onDragEnd, onDragMove])
 
   return (
     <div ref={refDragHandler} className="flex -mx-4 flex-row relative">{children}</div>
