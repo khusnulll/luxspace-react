@@ -4,6 +4,7 @@ import { addClass, removeClass } from '../../../helpers/format/classNameModifier
 
 const Carousel = ({children, refContainer}) => {
   const refDragHandler = useRef(null)
+  const containerClientRect = refContainer.current.getBoundingClientRect()
   const [index, setIndex] = useState(0)
 
   const treshold = 100
@@ -33,10 +34,10 @@ const Carousel = ({children, refContainer}) => {
           refDragHandler.current.style.left = 0
           setIndex(0)
         } else if(index >= cardCount - itemToShow){
-          refDragHandler.current.style.left = -((cardCount - itemToShow + isMobile) * cardSize)
+          refDragHandler.current.style.left = `${-((cardCount - itemToShow + isMobile) * cardSize)}px`
           setIndex(cardCount - itemToShow)
         } else if(index === cardCount || index === cardCount - 1 ){
-          refDragHandler.current.style.left = (cardCount - 1) * cardSize
+          refDragHandler.current.style.left = `${(cardCount - 1) * cardSize}px`
           setIndex(cardCount - 1)
         }
 
@@ -130,10 +131,14 @@ const Carousel = ({children, refContainer}) => {
     [],
   )
 
-  const onClick = e => {
-    e = e || window.e
-    !isAllowShift.current && e.preventDefault()
-  }
+  const onClick = useCallback(
+    (e) => {
+      e = e || window.e
+      !isAllowShift.current && e.preventDefault()
+    },
+    [],
+  )
+  
 
   useLayoutEffect(() => {
     const refForwardDragHandler = refDragHandler.current
@@ -143,20 +148,30 @@ const Carousel = ({children, refContainer}) => {
     refForwardDragHandler.addEventListener("touchend", onDragEnd)
     refForwardDragHandler.addEventListener("touchmove", onDragMove)
     refForwardDragHandler.addEventListener("click", onClick)
-    refForwardDragHandler.addEventListener("transitionEnd", fnCheckIndex)
+    refForwardDragHandler.addEventListener("transitionend", fnCheckIndex)
    
     return () => {
       refForwardDragHandler.removeEventListener("touchstart", onDragStart)
       refForwardDragHandler.removeEventListener("touchend", onDragEnd)
       refForwardDragHandler.removeEventListener("touchmove", onDragMove)
       refForwardDragHandler.removeEventListener("click", onClick)
-      refForwardDragHandler.addEventListener("transitionEnd", fnCheckIndex)
+      refForwardDragHandler.addEventListener("transitionend", fnCheckIndex)
 
     };
   }, [onDragStart, onDragEnd, onDragMove, onClick, fnCheckIndex])
 
+  useLayoutEffect(() => {
+    if(refDragHandler.current){
+      cards.current = refDragHandler.current.getElementsByClassName("card")
+    }
+  
+    return () => {
+      
+    };
+  }, [])
+
   return (
-    <div ref={refDragHandler} className="flex -mx-4 flex-row relative">{children}</div>
+    <div ref={refDragHandler} className="flex -mx-4 flex-row relative" style={{paddingLeft: containerClientRect.left - 16}}>{children}</div>
   )
 }
 

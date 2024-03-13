@@ -62,12 +62,6 @@ const BrowseRoom = () => {
     console.log(data);
   }, [run]);
 
-
-  // console.log(data, status, error);
-  // console.log("Data:", data);
-  console.log("Status:", status);
-  console.log("Error:", error);
-
   const ratioClassNames = {
     wrapper: {
       default: {
