@@ -14,7 +14,6 @@ const JustArrived = () => {
 
   useEffect(() => {
     run(fetch({ url: "/api/products/?page=1&limit=10" }));
-    console.log(data);
   }, [run]);
 
   return (
@@ -39,7 +38,7 @@ const JustArrived = () => {
               ? "No Product Found"
               : (<Carousel refContainer ={refContainer}>{data?.data?.map((item) => {
                 return (
-                  <div className="px-4 relative card group">
+                  <div className="px-4 relative card group" key={item?.id}>
                     <div className="rounded-xl overflow-hidden card-shadow relative" style={{ width: 287, height: 386 }}>
                       <div className="absolute opacity-0 group-hover:opacity-100 transition duration-200 flex items-center justify-center w-full h-full bg-black bg-opacity-25">
                         <div className="bg-white text-black rounded-full w-16 h-16 flex items-center justify-center">
