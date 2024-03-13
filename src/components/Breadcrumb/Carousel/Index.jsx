@@ -1,5 +1,7 @@
 import React, {useRef, useState, useCallback, useLayoutEffect} from 'react'
 
+import { addClass, removeClass } from '../../../helpers/format/classNameModifier'
+
 const Carousel = ({children, refContainer}) => {
   const refDragHandler = useRef(null)
   const [index, setIndex] = useState(0)
@@ -15,6 +17,56 @@ const Carousel = ({children, refContainer}) => {
   const posFinal = useRef()
   const isAllowShift = useRef(true)
   const cards = useRef()
+
+  const cardCount = cards.current?.length || 0
+  const cardSize = cards.current?.[0].offsetWidth || 0
+
+  const fnCheckIndex = useCallback(
+    (e) => {
+      if(e.propertyName === "left"){
+        setTimeout(() => {
+          removeClass(refDragHandler.current, "transition-all duration-200")
+        }, 200);
+
+        const isMobile = window.innerWidth < 767 ? 0 : -1
+        if(index <= 0){
+          refDragHandler.current.style.left = 0
+          setIndex(0)
+        } else if(index >= cardCount - itemToShow){
+          refDragHandler.current.style.left = -((cardCount - itemToShow + isMobile) * cardSize)
+          setIndex(cardCount - itemToShow)
+        } else if(index === cardCount || index === cardCount - 1 ){
+          refDragHandler.current.style.left = (cardCount - 1) * cardSize
+          setIndex(cardCount - 1)
+        }
+
+        isAllowShift.current = true
+      }
+    },
+    [cardCount, cardSize, index, itemToShow],
+  )
+  
+
+
+  const fnShiftItem = useCallback(
+    (direction) => {
+      addClass(refDragHandler.current, "transition-all duration-200")
+
+      if(isAllowShift.current){
+        if(direction === "DIRECTION_LEFT"){
+          setIndex(prev => prev + 1)
+          refDragHandler.current.style.left = `{posInitial.current - cardSize} px`
+        } else if( direction === "DIRECTION_RIGHT"){
+          setIndex(prev => prev - 1)
+          refDragHandler.current.style.left = `{posInitial.current + cardSize} px`
+        }
+      }
+
+      isAllowShift.current = false
+    },
+    [cardSize],
+  )
+  
 
   const onDragMove = useCallback(
     (e) => {
@@ -51,8 +103,12 @@ const Carousel = ({children, refContainer}) => {
       refDragHandler.current.style.left = `${posInitial.current} px`
 
       }
+
+      document.onmouseup = null
+      document.onmousemove = null
+
     },
-    [],
+    [fnShiftItem],
   )
 
   const onDragStart = useCallback(
@@ -74,6 +130,11 @@ const Carousel = ({children, refContainer}) => {
     [],
   )
 
+  const onClick = e => {
+    e = e || window.e
+    !isAllowShift.current && e.preventDefault()
+  }
+
   useLayoutEffect(() => {
     const refForwardDragHandler = refDragHandler.current
 
@@ -81,13 +142,18 @@ const Carousel = ({children, refContainer}) => {
     refForwardDragHandler.addEventListener("touchstart", onDragStart)
     refForwardDragHandler.addEventListener("touchend", onDragEnd)
     refForwardDragHandler.addEventListener("touchmove", onDragMove)
+    refForwardDragHandler.addEventListener("click", onClick)
+    refForwardDragHandler.addEventListener("transitionEnd", fnCheckIndex)
    
     return () => {
       refForwardDragHandler.removeEventListener("touchstart", onDragStart)
       refForwardDragHandler.removeEventListener("touchend", onDragEnd)
       refForwardDragHandler.removeEventListener("touchmove", onDragMove)
+      refForwardDragHandler.removeEventListener("click", onClick)
+      refForwardDragHandler.addEventListener("transitionEnd", fnCheckIndex)
+
     };
-  }, [onDragStart, onDragEnd, onDragMove])
+  }, [onDragStart, onDragEnd, onDragMove, onClick, fnCheckIndex])
 
   return (
     <div ref={refDragHandler} className="flex -mx-4 flex-row relative">{children}</div>
