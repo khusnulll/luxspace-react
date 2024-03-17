@@ -63,7 +63,7 @@ const JustArrived = () => {
                     </div>
                     <h5 className="text-lg font-semibold mt-4">{item.title}</h5>
                     <span className="">IDR {item.price}</span>
-                    <a onClick={() => navigate(`/categories/${item.idc}/products/${item.id}`)} className="stretched-link"></a>
+                    <a onClick={() => navigate(`/details/${item.idc}`)} className="stretched-link"></a>
                   </div>
                 );
               })}</Carousel>)}
