@@ -1,4 +1,4 @@
-export default function fetchData({ url, method = "GET", host = "https://694dc68a-1939-4e41-9198-e4638dafb209.mock.pstmn.io", body }) {
+export default function fetchData({ url, method = "GET", host = "https://9a5df1f2-d2f8-4bfb-a9ff-1cd1fa997770.mock.pstmn.io", body }) {
   return fetch(`${host}${url}`, {
     method,
     mode: "cors",
